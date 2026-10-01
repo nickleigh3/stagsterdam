@@ -17,7 +17,6 @@
 html { scroll-padding-top: env(safe-area-inset-top, 0px); }
 html, body { height: 100%; }
 body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
-
 nav {
   position: fixed; top: env(safe-area-inset-top,0); left: 0; right: 0;
   background: rgba(13,27,42,0.92); backdrop-filter: blur(12px);
@@ -28,7 +27,6 @@ nav {
 .nav-links { display: flex; gap: 18px; }
 .nav-links a { font-size: 12px; color: var(--grey); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--amber); }
-
 .hero {
   min-height: 100vh;
   background: linear-gradient(160deg, #0D1B2A 0%, #152436 40%, #0D2A1E 100%);
@@ -56,28 +54,23 @@ nav {
 }
 .hero-scroll::after { content: '↓'; font-size: 18px; color: var(--amber); animation: bounce 1.5s ease-in-out infinite; }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-
 section { padding: 64px 24px; max-width: 640px; margin: 0 auto; }
 .section-label { font-size: 11px; font-weight: 600; color: var(--amber); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
 .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 7vw, 42px); font-weight: 700; line-height: 1.05; letter-spacing: -1px; margin-bottom: 32px; }
-
 .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .info-card { background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px; }
 .info-card-label { font-size: 10px; font-weight: 600; color: var(--grey); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
 .info-card-val { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); }
 .info-card-sub { font-size: 11px; color: var(--grey); margin-top: 3px; }
-
 .day-header { display: flex; align-items: center; gap: 12px; padding: 20px 0 16px; border-top: 1px solid rgba(255,255,255,0.08); }
 .day-num { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: rgba(232,168,56,0.2); line-height: 1; min-width: 48px; }
 .day-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.1; }
-
 .timeline { margin-top: 8px; }
 .event { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .event:last-child { border-bottom: none; }
 .event-time { font-size: 11px; font-weight: 600; color: var(--amber); min-width: 42px; padding-top: 2px; }
 .event-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .event-desc { font-size: 12px; color: var(--grey); line-height: 1.5; }
-
 .game-section { background: var(--navy-mid); border-top: 1px solid rgba(232,168,56,0.15); border-bottom: 1px solid rgba(232,168,56,0.15); padding: 48px 24px; text-align: center; }
 .game-canvas-wrap { position: relative; margin: 24px auto 0; width: 100%; max-width: 380px; background: rgba(13,27,42,0.8); border: 1px solid rgba(232,168,56,0.2); border-radius: 16px; overflow: hidden; }
 canvas#gameCanvas { display: block; width: 100%; }
@@ -87,13 +80,11 @@ canvas#gameCanvas { display: block; width: 100%; }
 .game-btn { margin-top: 20px; padding: 14px 36px; background: var(--amber); color: var(--navy); font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; transition: background 0.15s; }
 .game-btn:hover { background: var(--amber-light); }
 .game-instructions { font-size: 12px; color: var(--grey); margin-top: 12px; }
-
 footer { text-align: center; padding: 40px 24px 60px; font-size: 12px; color: var(--grey); border-top: 1px solid rgba(255,255,255,0.06); }
 footer strong { color: var(--amber); }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-logo">Sam's Stag 🇳🇱</div>
   <div class="nav-links">
@@ -104,7 +95,6 @@ footer strong { color: var(--amber); }
     <a href="#game">Game</a>
   </div>
 </nav>
-
 <div class="hero">
   <div class="hero-flag">🇳🇱</div>
   <h1 class="hero-title">STAG<span>STERDAM</span></h1>
@@ -117,164 +107,60 @@ footer strong { color: var(--amber); }
   </div>
   <div class="hero-scroll">scroll</div>
 </div>
-
-<!-- LOGISTICS -->
 <section id="logistics">
   <div class="section-label">The basics</div>
   <h2 class="section-title">What you need to know</h2>
   <div class="info-grid">
-    <div class="info-card">
-      <div class="info-card-label">Depart</div>
-      <div class="info-card-val">09:55</div>
-      <div class="info-card-sub">Luton → AMS · Fri 9 Oct</div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Return</div>
-      <div class="info-card-val">18:20</div>
-      <div class="info-card-sub">AMS → Luton · Sun 11 Oct</div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Hotel</div>
-      <div class="info-card-val">NH City Centre</div>
-      <div class="info-card-sub">8 twin rooms · Check in 3pm</div>
-    </div>
-    <div class="info-card">
-      <div class="info-card-label">Airline</div>
-      <div class="info-card-val">easyJet</div>
-      <div class="info-card-sub">Hand luggage only — pack light</div>
-    </div>
+    <div class="info-card"><div class="info-card-label">Depart</div><div class="info-card-val">09:55</div><div class="info-card-sub">Luton → AMS · Fri 9 Oct</div></div>
+    <div class="info-card"><div class="info-card-label">Return</div><div class="info-card-val">18:20</div><div class="info-card-sub">AMS → Luton · Sun 11 Oct</div></div>
+    <div class="info-card"><div class="info-card-label">Hotel</div><div class="info-card-val">NH City Centre</div><div class="info-card-sub">8 twin rooms · Check in 3pm</div></div>
+    <div class="info-card"><div class="info-card-label">Airline</div><div class="info-card-val">easyJet</div><div class="info-card-sub">Hand luggage only — pack light</div></div>
   </div>
 </section>
-
-<!-- FRIDAY -->
 <section id="friday" style="padding-top:0">
   <div class="section-label">Day 1</div>
   <h2 class="section-title">Friday 9 October</h2>
-  <div class="day-header">
-    <div class="day-num">01</div>
-    <div><div class="day-title">Friday</div></div>
-  </div>
+  <div class="day-header"><div class="day-num">01</div><div><div class="day-title">Friday</div></div></div>
   <div class="timeline">
-    <div class="event">
-      <div class="event-time">09:55</div>
-      <div class="event-body"><div class="event-title">Depart Luton ✈️</div><div class="event-desc">easyJet LTN → AMS. Land 12:10.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">13:30</div>
-      <div class="event-body"><div class="event-title">Check in — NH City Centre</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">14:00</div>
-      <div class="event-body"><div class="event-title">Lunch — Foodhallen</div><div class="event-desc">Indoor food market — 21 stalls, great beers. Everyone picks their own.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">15:30</div>
-      <div class="event-body"><div class="event-title">Free ferry</div><div class="event-desc">Behind Central Station — 5 min crossing, runs every few minutes.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">16:00</div>
-      <div class="event-body"><div class="event-title">A'dam VR — Team Duel 🎮</div><div class="event-desc">Free-roam zombie shooter + F1 racing + a drink each.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">18:00</div>
-      <div class="event-body"><div class="event-title">Hotel — freshen up</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">20:00</div>
-      <div class="event-body"><div class="event-title">Dinner — Ceppis 🍕</div><div class="event-desc">Canal-side Italian. Lijnbaansgracht 256.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">22:00</div>
-      <div class="event-body"><div class="event-title">Leidseplein bar crawl 🍺</div><div class="event-desc">Café Brecht → Café Nol → Bourbon Street → Paradiso → Jimmy Woo.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">Late</div>
-      <div class="event-body"><div class="event-title">Red Light District 🔴</div></div>
-    </div>
+    <div class="event"><div class="event-time">09:55</div><div class="event-body"><div class="event-title">Depart Luton ✈️</div><div class="event-desc">easyJet LTN → AMS. Land 12:10.</div></div></div>
+    <div class="event"><div class="event-time">13:30</div><div class="event-body"><div class="event-title">Check in — NH City Centre</div></div></div>
+    <div class="event"><div class="event-time">14:00</div><div class="event-body"><div class="event-title">Lunch — Foodhallen</div><div class="event-desc">Indoor food market — 21 stalls, great beers. Everyone picks their own.</div></div></div>
+    <div class="event"><div class="event-time">15:30</div><div class="event-body"><div class="event-title">Free ferry</div><div class="event-desc">Behind Central Station — 5 min crossing, runs every few minutes.</div></div></div>
+    <div class="event"><div class="event-time">16:00</div><div class="event-body"><div class="event-title">A'dam VR — Team Duel 🎮</div><div class="event-desc">Free-roam zombie shooter + F1 racing + a drink each.</div></div></div>
+    <div class="event"><div class="event-time">18:00</div><div class="event-body"><div class="event-title">Hotel — freshen up</div></div></div>
+    <div class="event"><div class="event-time">20:00</div><div class="event-body"><div class="event-title">Dinner — Ceppis 🍕</div><div class="event-desc">Canal-side Italian. Lijnbaansgracht 256.</div></div></div>
+    <div class="event"><div class="event-time">22:00</div><div class="event-body"><div class="event-title">Leidseplein bar crawl 🍺</div><div class="event-desc">Café Brecht → Café Nol → Bourbon Street → Paradiso → Jimmy Woo.</div></div></div>
+    <div class="event"><div class="event-time">Late</div><div class="event-body"><div class="event-title">Red Light District 🔴</div></div></div>
   </div>
 </section>
-
-<!-- SATURDAY -->
 <section id="saturday" style="padding-top:0">
   <div class="section-label">Day 2</div>
   <h2 class="section-title">Saturday 10 October</h2>
-  <div class="day-header">
-    <div class="day-num">02</div>
-    <div><div class="day-title">Saturday</div></div>
-  </div>
+  <div class="day-header"><div class="day-num">02</div><div><div class="day-title">Saturday</div></div></div>
   <div class="timeline">
-    <div class="event">
-      <div class="event-time">09:30</div>
-      <div class="event-body"><div class="event-title">Breakfast — Louf ☕</div><div class="event-desc">De Pijp. Pastries, great coffee. Easy start.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">10:30</div>
-      <div class="event-body"><div class="event-title">Heineken Experience 🍺</div><div class="event-desc">Stadhouderskade 78. Brewery tour — pour your own pint.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">11:45</div>
-      <div class="event-body"><div class="event-title">Lunch — Kikkie 🍔</div><div class="event-desc">Short walk from Heineken. Smash burger, mussels, brown bar vibe.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">13:30</div>
-      <div class="event-body"><div class="event-title">Afternoon sport 🎱</div><div class="event-desc">Sports bar — big screen, pool table, smoke-friendly terrace.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">16:30</div>
-      <div class="event-body"><div class="event-title">Hotel — freshen up</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">17:30</div>
-      <div class="event-body"><div class="event-title">Canal tour 🛥️</div><div class="event-desc">Private canal cruise — unlimited drinks on board. 1.5hrs.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">20:30</div>
-      <div class="event-body"><div class="event-title">Dinner — Stacks Diner 🥩</div><div class="event-desc">American-style diner, Amsterdam-West. Set menu.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">22:30</div>
-      <div class="event-body"><div class="event-title">Coffeeshops + Red Light District 🌿</div><div class="event-desc">Rookies → Abraxas → Boerejongens. Then Banana Bar and De Wallen.</div></div>
-    </div>
+    <div class="event"><div class="event-time">09:30</div><div class="event-body"><div class="event-title">Breakfast — Louf ☕</div><div class="event-desc">De Pijp. Pastries, great coffee. Easy start.</div></div></div>
+    <div class="event"><div class="event-time">10:30</div><div class="event-body"><div class="event-title">Heineken Experience 🍺</div><div class="event-desc">Stadhouderskade 78. Brewery tour — pour your own pint.</div></div></div>
+    <div class="event"><div class="event-time">11:45</div><div class="event-body"><div class="event-title">Lunch — Kikkie 🍔</div><div class="event-desc">Short walk from Heineken. Smash burger, mussels, brown bar vibe.</div></div></div>
+    <div class="event"><div class="event-time">13:30</div><div class="event-body"><div class="event-title">Afternoon sport 🎱</div><div class="event-desc">Sports bar — big screen, pool table, smoke-friendly terrace.</div></div></div>
+    <div class="event"><div class="event-time">16:30</div><div class="event-body"><div class="event-title">Hotel — freshen up</div></div></div>
+    <div class="event"><div class="event-time">17:30</div><div class="event-body"><div class="event-title">Canal tour 🛥️</div><div class="event-desc">Private canal cruise — unlimited drinks on board. 1.5hrs.</div></div></div>
+    <div class="event"><div class="event-time">20:30</div><div class="event-body"><div class="event-title">Dinner — Stacks Diner 🥩</div><div class="event-desc">American-style diner, Amsterdam-West. Set menu.</div></div></div>
+    <div class="event"><div class="event-time">22:30</div><div class="event-body"><div class="event-title">Coffeeshops + Red Light District 🌿</div><div class="event-desc">Rookies → Abraxas → Boerejongens. Then Banana Bar and De Wallen.</div></div></div>
   </div>
 </section>
-
-<!-- SUNDAY -->
 <section id="sunday" style="padding-top:0">
   <div class="section-label">Day 3</div>
   <h2 class="section-title">Sunday 11 October</h2>
-  <div class="day-header">
-    <div class="day-num">03</div>
-    <div><div class="day-title">Sunday</div></div>
-  </div>
+  <div class="day-header"><div class="day-num">03</div><div><div class="day-title">Sunday</div></div></div>
   <div class="timeline">
-    <div class="event">
-      <div class="event-time">09:00</div>
-      <div class="event-body"><div class="event-title">Check out</div><div class="event-desc">Leave bags at bell desk. No rush.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">10:00</div>
-      <div class="event-body"><div class="event-title">Brunch — Little Collins 🥞</div><div class="event-desc">Eerste Helmersstraat 5. Walk-in — get there early.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">11:30</div>
-      <div class="event-body"><div class="event-title">Noordermarkt wander</div><div class="event-desc">Sunday market. Last canal photos.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">14:00</div>
-      <div class="event-body"><div class="event-title">Dessert crawl 🍪</div><div class="event-desc">Van Stapele → Winkel 43 → Van Wonderen Stroopwafels.</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">15:30</div>
-      <div class="event-body"><div class="event-title">Train to Schiphol</div></div>
-    </div>
-    <div class="event">
-      <div class="event-time">18:20</div>
-      <div class="event-body"><div class="event-title">Depart Amsterdam ✈️</div><div class="event-desc">easyJet AMS → LTN. The Gimp goes home.</div></div>
-    </div>
+    <div class="event"><div class="event-time">09:00</div><div class="event-body"><div class="event-title">Check out</div><div class="event-desc">Leave bags at bell desk. No rush.</div></div></div>
+    <div class="event"><div class="event-time">10:00</div><div class="event-body"><div class="event-title">Brunch — Little Collins 🥞</div><div class="event-desc">Eerste Helmersstraat 5. Walk-in — get there early.</div></div></div>
+    <div class="event"><div class="event-time">11:30</div><div class="event-body"><div class="event-title">Noordermarkt wander</div><div class="event-desc">Sunday market. Last canal photos.</div></div></div>
+    <div class="event"><div class="event-time">14:00</div><div class="event-body"><div class="event-title">Dessert crawl 🍪</div><div class="event-desc">Van Stapele → Winkel 43 → Van Wonderen Stroopwafels.</div></div></div>
+    <div class="event"><div class="event-time">15:30</div><div class="event-body"><div class="event-title">Train to Schiphol</div></div></div>
+    <div class="event"><div class="event-time">18:20</div><div class="event-body"><div class="event-title">Depart Amsterdam ✈️</div><div class="event-desc">easyJet AMS → LTN. The Gimp goes home.</div></div></div>
   </div>
 </section>
-
-<!-- GAME -->
 <div class="game-section" id="game">
   <div class="section-label" style="text-align:center">Mini game</div>
   <h2 class="section-title" style="text-align:center;max-width:640px;margin:8px auto 4px">Catch the Stroopwafel</h2>
@@ -290,13 +176,11 @@ footer strong { color: var(--amber); }
   <button class="game-btn" id="gameBtn" onclick="startGame()">Start Game</button>
   <p class="game-instructions">Tap / click to move Sam left and right</p>
 </div>
-
 <footer>
   <p style="font-size:20px;margin-bottom:12px">🇳🇱</p>
   <p>Organised by <strong>The Gaffer</strong> · For <strong>The Gimp</strong> · Amsterdam 2025</p>
   <p style="margin-top:8px">Un equipo, un sueño 🏆</p>
 </footer>
-
 <script>
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -304,7 +188,6 @@ const W = canvas.width, H = canvas.height;
 let gameState = 'idle', score = 0, lives = 3, level = 1, frame = 0;
 let player = { x: W/2, w: 44, speed: 7 };
 let items = [], keys = {}, touchX = null, animId;
-
 function updateUI() {
   document.getElementById('scoreDisplay').textContent = score;
   document.getElementById('livesDisplay').textContent = '❤️'.repeat(Math.max(0,lives));
