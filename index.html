@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sam's Stag — Amsterdam</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B2A;
+  --navy-mid: #152436;
+  --navy-light: #1E3350;
+  --amber: #E8A838;
+  --amber-light: #F5C85A;
+  --white: #F7F5F0;
+  --grey: #8A9BAD;
+  --red: #C0392B;
+  --green: #1A7A4A;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+html, body { height: 100%; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: env(safe-area-inset-top,0); left: 0; right: 0;
+  background: rgba(13,27,42,0.92); backdrop-filter: blur(12px);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px; z-index: 100; border-bottom: 1px solid rgba(232,168,56,0.2);
+}
+.nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: var(--amber); letter-spacing: -0.3px; }
+.nav-links { display: flex; gap: 18px; }
+.nav-links a { font-size: 12px; color: var(--grey); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--amber); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #0D1B2A 0%, #152436 40%, #0D2A1E 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 80px 24px 40px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(232,168,56,0.08) 0%, transparent 70%);
+}
+.hero-flag { font-size: 48px; margin-bottom: 24px; }
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(48px, 12vw, 96px);
+  font-weight: 700; line-height: 0.95;
+  color: var(--white); letter-spacing: -2px;
+  margin-bottom: 16px;
+}
+.hero-title span { color: var(--amber); }
+.hero-sub {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(16px, 4vw, 22px);
+  color: var(--grey); font-weight: 500; margin-bottom: 32px;
+}
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 48px; }
+.pill {
+  background: rgba(232,168,56,0.12); border: 1px solid rgba(232,168,56,0.3);
+  color: var(--amber); font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 20px; letter-spacing: 0.3px;
+}
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  color: var(--grey); font-size: 12px; font-weight: 500;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.hero-scroll::after {
+  content: '↓'; font-size: 18px; color: var(--amber);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* SECTIONS */
+section { padding: 64px 24px; max-width: 640px; margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 600; color: var(--amber);
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 7vw, 42px); font-weight: 700;
+  line-height: 1.05; letter-spacing: -1px; margin-bottom: 32px;
+}
+
+/* CREW */
+.crew-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.crew-card {
+  background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 16px;
+}
+.crew-card.stag { background: rgba(232,168,56,0.12); border-color: rgba(232,168,56,0.3); grid-column: 1 / -1; }
+.crew-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+.crew-nick { font-size: 12px; color: var(--amber); font-weight: 600; margin-bottom: 6px; }
+.crew-desc { font-size: 11px; color: var(--grey); line-height: 1.5; }
+
+/* DAY CARDS */
+.day-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 0 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.day-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px; font-weight: 700; color: rgba(232,168,56,0.2);
+  line-height: 1; min-width: 48px;
+}
+.day-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.1; }
+.day-sub { font-size: 12px; color: var(--grey); margin-top: 2px; }
+
+.timeline { margin-top: 8px; }
+.event {
+  display: flex; gap: 14px; padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.event:last-child { border-bottom: none; }
+.event-time { font-size: 11px; font-weight: 600; color: var(--amber); min-width: 42px; padding-top: 2px; }
+.event-body {}
+.event-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.event-desc { font-size: 12px; color: var(--grey); line-height: 1.5; }
+.booked { display: inline-block; margin-top: 4px; font-size: 10px; font-weight: 600; color: var(--green); background: rgba(26,122,74,0.15); padding: 2px 7px; border-radius: 10px; border: 1px solid rgba(26,122,74,0.3); }
+
+/* INFO CARDS */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.info-card {
+  background: var(--navy-mid); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 16px;
+}
+.info-card-label { font-size: 10px; font-weight: 600; color: var(--grey); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.info-card-val { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); }
+.info-card-sub { font-size: 11px; color: var(--grey); margin-top: 3px; }
+
+/* RULES */
+.rules-list { list-style: none; }
+.rules-list li {
+  display: flex; gap: 12px; padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--grey); line-height: 1.5;
+}
+.rules-list li:last-child { border-bottom: none; }
+.rule-num { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: rgba(232,168,56,0.3); min-width: 28px; }
+
+/* GAME */
+.game-section {
+  background: var(--navy-mid); border-top: 1px solid rgba(232,168,56,0.15);
+  border-bottom: 1px solid rgba(232,168,56,0.15);
+  padding: 48px 24px; text-align: center;
+}
+.game-canvas-wrap {
+  position: relative; margin: 24px auto 0;
+  width: 100%; max-width: 380px;
+  background: rgba(13,27,42,0.8); border: 1px solid rgba(232,168,56,0.2);
+  border-radius: 16px; overflow: hidden;
+}
+canvas#gameCanvas { display: block; width: 100%; }
+.game-ui {
+  display: flex; justify-content: space-around; align-items: center;
+  padding: 12px 20px; background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.game-stat-label { font-size: 10px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.5px; }
+.game-stat-val { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--amber); }
+.game-btn {
+  margin-top: 20px; padding: 14px 36px;
+  background: var(--amber); color: var(--navy);
+  font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700;
+  border: none; border-radius: 10px; cursor: pointer; transition: background 0.15s;
+}
+.game-btn:hover { background: var(--amber-light); }
+.game-instructions { font-size: 12px; color: var(--grey); margin-top: 12px; }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 40px 24px 60px;
+  font-size: 12px; color: var(--grey); border-top: 1px solid rgba(255,255,255,0.06);
+}
+footer strong { color: var(--amber); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Sam's Stag 🇳🇱</div>
+  <div class="nav-links">
+    <a href="#crew">Crew</a>
+    <a href="#friday">Fri</a>
+    <a href="#saturday">Sat</a>
+    <a href="#sunday">Sun</a>
+    <a href="#game">Game</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-flag">🇳🇱</div>
+  <h1 class="hero-title">STAG<span>STERDAM</span></h1>
+  <p class="hero-sub">Amsterdam · 9–11 October 2025</p>
+  <div class="hero-pills">
+    <span class="pill">8 legends</span>
+    <span class="pill">3 days</span>
+    <span class="pill">1 gimp</span>
+    <span class="pill">∞ regrets</span>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</div>
+
+<!-- LOGISTICS -->
+<section id="logistics">
+  <div class="section-label">The basics</div>
+  <h2 class="section-title">What you need to know</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-label">Depart</div>
+      <div class="info-card-val">09:55</div>
+      <div class="info-card-sub">Luton → AMS · Fri 9 Oct</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Return</div>
+      <div class="info-card-val">18:20</div>
+      <div class="info-card-sub">AMS → Luton · Sun 11 Oct</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Hotel</div>
+      <div class="info-card-val">NH City Centre</div>
+      <div class="info-card-sub">8 twin rooms · Check in 3pm</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Airline</div>
+      <div class="info-card-val">easyJet</div>
+      <div class="info-card-sub">Hand luggage — pack light</div>
+    </div>
+  </div>
+</section>
+
+<!-- CREW -->
+<section id="crew" style="padding-top:0">
+  <div class="section-label">The squad</div>
+  <h2 class="section-title">Who's coming</h2>
+  <div class="crew-grid">
+    <div class="crew-card stag">
+      <div class="crew-name">Sam</div>
+      <div class="crew-nick">The Gimp 👑</div>
+      <div class="crew-desc">Does what he's told. Uptight by nature, legend by necessity. Getting married — this is his last weekend of freedom and we will be using him accordingly.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Nick</div>
+      <div class="crew-nick">The Gaffer 🗂️</div>
+      <div class="crew-desc">Organised every single thing. Has a spreadsheet. Has a PDF. Has a backup PDF. Do not question the itinerary.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Josh</div>
+      <div class="crew-nick">Quiet Storm ⚡</div>
+      <div class="crew-desc">Shy. Polite. Two drinks in and suddenly he's leading the bar crawl and has new best friends. Nobody knows how.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Jake</div>
+      <div class="crew-nick">Stryder 🗡️</div>
+      <div class="crew-desc">Arrived. Arrived in the way that only Stryder arrives. You'll know what we mean when you see it.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Mark</div>
+      <div class="crew-nick">Le Fox 🦊</div>
+      <div class="crew-desc">Debonair. Wily. Somehow always in the right place at the right time. Amsterdam was made for Le Fox.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Tal</div>
+      <div class="crew-nick">The Therapist 🛋️</div>
+      <div class="crew-desc">Available for one-to-ones throughout the weekend. Non-judgemental. Confidential. Not actually licensed.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Adam</div>
+      <div class="crew-nick">Daaam 😤</div>
+      <div class="crew-desc">That's it. That's the whole vibe. One look and you get it. Daaam.</div>
+    </div>
+    <div class="crew-card">
+      <div class="crew-name">Mickey</div>
+      <div class="crew-nick">Sam's Brother-in-Law 🤷</div>
+      <div class="crew-desc">We don't know much. He's marrying into the family alongside Sam. That's his whole identity for this weekend and honestly that's enough.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FRIDAY -->
+<section id="friday" style="padding-top:0">
+  <div class="section-label">Day 1</div>
+  <h2 class="section-title">Friday 9 October</h2>
+  <div class="day-header">
+    <div class="day-num">01</div>
+    <div>
+      <div class="day-title">Arrive · VR · Ceppis · Bar Crawl</div>
+      <div class="day-sub">The opening gambit</div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="event">
+      <div class="event-time">09:55</div>
+      <div class="event-body">
+        <div class="event-title">Depart Luton</div>
+        <div class="event-desc">easyJet LTN → AMS. Land 12:10. Taxi or train to the hotel — check in from 13:30.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">14:00</div>
+      <div class="event-body">
+        <div class="event-title">Lunch — Foodhallen</div>
+        <div class="event-desc">Amsterdam's best indoor food market. 21 stalls in a converted tram depot. Everyone picks their own — beers at the central bar.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">15:30</div>
+      <div class="event-body">
+        <div class="event-title">Free ferry → A'dam VR</div>
+        <div class="event-desc">Jump the free ferry from behind Central Station. 5-minute crossing to Overhoeksplein. Runs every few minutes.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">16:00</div>
+      <div class="event-body">
+        <div class="event-title">A'dam VR — Team Duel 🎮</div>
+        <div class="event-desc">Overhoeksplein 5. Free-roam zombie shooter + 30 mins F1 racing + 1 drink each. ~1hr. Contact: Rens — 06 12 42 17 11. Pay at venue.</div>
+        <span class="booked">✓ Booked — 8 people, 16:00</span>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">18:00</div>
+      <div class="event-body">
+        <div class="event-title">Hotel — freshen up</div>
+        <div class="event-desc">Back to NH City Centre. Get changed. Pre-drinks at Café Pollux or Eddy Bar if you need a warm-up.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">20:00</div>
+      <div class="event-body">
+        <div class="event-title">Dinner — Ceppis 🍕</div>
+        <div class="event-desc">Lijnbaansgracht 256. Canal-side Italian — burrata, fresh pasta, wood-fired pizza, Italian cocktails.</div>
+        <span class="booked">✓ Booked & confirmed</span>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">22:00</div>
+      <div class="event-body">
+        <div class="event-title">Leidseplein bar crawl 🍺</div>
+        <div class="event-desc">Café Brecht → Café Nol → Bourbon Street → Paradiso → Jimmy Woo. Amsterdam's stag heartland. The Gimp leads the way.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">Late</div>
+      <div class="event-body">
+        <div class="event-title">Red Light District 🔴</div>
+        <div class="event-desc">De Wallen. Peep shows on Oudezijds Achterburgwal. Casa Rosso for the show. No photos near the windows — seriously.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SATURDAY -->
+<section id="saturday" style="padding-top:0">
+  <div class="section-label">Day 2</div>
+  <h2 class="section-title">Saturday 10 October</h2>
+  <div class="day-header">
+    <div class="day-num">02</div>
+    <div>
+      <div class="day-title">Heineken · Arsenal · Boat · Stacks</div>
+      <div class="day-sub">The big one</div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="event">
+      <div class="event-time">09:30</div>
+      <div class="event-body">
+        <div class="event-title">Breakfast — Louf (De Pijp) ☕</div>
+        <div class="event-desc">Michelin chef-backed bakery. Great pastries, great coffee. Chilled, trendy, not touristy. Right near Heineken.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">10:30</div>
+      <div class="event-body">
+        <div class="event-title">Heineken Experience 🍺</div>
+        <div class="event-desc">Stadhouderskade 78. Interactive brewery tour, pour your own pint. ~1hr.</div>
+        <span class="booked">✓ Booked — deposit paid</span>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">11:45</div>
+      <div class="event-body">
+        <div class="event-title">Lunch — Kikkie 🍔</div>
+        <div class="event-desc">Short walk from Heineken. Smash burger, mussels with nduja, brown bar vibe. Walk-in — call ahead: +31 20 224 6022</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">13:30</div>
+      <div class="event-body">
+        <div class="event-title">Arsenal v Leeds — TBC bar ⚽</div>
+        <div class="event-desc">Kick off 12:30 BST / 13:30 Amsterdam. Somewhere with pool/snooker, big screen, smoke-friendly terrace. TBC — Gaffer is on it.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">16:30</div>
+      <div class="event-body">
+        <div class="event-title">Hotel — showers, get ready</div>
+        <div class="event-desc">Game ends ~15:15 Amsterdam time. Back to hotel, freshen up before the evening.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">17:30</div>
+      <div class="event-body">
+        <div class="event-title">Stripper boat 🛥️</div>
+        <div class="event-desc">Private canal cruise, 1.5hrs. Unlimited beer, wine & soft drinks. Special guest joins for the last 30 minutes. Back by ~19:00.</div>
+        <span class="booked">✓ Booked — Striptease Nederland</span>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">20:30</div>
+      <div class="event-body">
+        <div class="event-title">Dinner — Stacks Diner 🥩</div>
+        <div class="event-desc">American-style diner, Amsterdam-West. Set menu. James Dimitri and Top Jaw both rate it highly.</div>
+        <span class="booked">✓ Booked — 20:30, deposit paid</span>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">22:30</div>
+      <div class="event-body">
+        <div class="event-title">Coffeeshops + Red Light District 🌿</div>
+        <div class="event-desc">Rookies → Abraxas → Boerejongens or Jolly Good (Jordaan). Then Banana Bar, peep shows, wander De Wallen. The Therapist is on standby.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUNDAY -->
+<section id="sunday" style="padding-top:0">
+  <div class="section-label">Day 3</div>
+  <h2 class="section-title">Sunday 11 October</h2>
+  <div class="day-header">
+    <div class="day-num">03</div>
+    <div>
+      <div class="day-title">Brunch · Dessert Crawl · Home</div>
+      <div class="day-sub">Dank u wel</div>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="event">
+      <div class="event-time">09:00</div>
+      <div class="event-body">
+        <div class="event-title">Check out — NH City Centre</div>
+        <div class="event-desc">Checkout by 12pm. Leave bags at bell desk. No rush this morning.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">10:00</div>
+      <div class="event-body">
+        <div class="event-title">Big brunch — Little Collins 🥞</div>
+        <div class="event-desc">Eerste Helmersstraat 5. Aussie-style brunch, great coffee. Walk-in only — get there early.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">11:30</div>
+      <div class="event-body">
+        <div class="event-title">Noordermarkt wander</div>
+        <div class="event-desc">Sunday market in the Jordaan. Organic stalls, last canal photos, final contemplation of your life choices.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">14:00</div>
+      <div class="event-body">
+        <div class="event-title">Dessert crawl 🍪</div>
+        <div class="event-desc">Van Stapele (famous cookie) → Winkel 43 (best apple pie in Amsterdam) → Van Wonderen Stroopwafels (warm, fresh pressed). All within walking distance.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">15:30</div>
+      <div class="event-body">
+        <div class="event-title">Train to Schiphol</div>
+        <div class="event-desc">Direct train from Amsterdam Centraal. 17 mins. Allow 2hrs before departure.</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-time">18:20</div>
+      <div class="event-body">
+        <div class="event-title">Depart Amsterdam ✈️</div>
+        <div class="event-desc">easyJet AMS → LTN. Land 18:30. Everyone home for Sunday. The Gimp returns to normal life.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section style="padding-top:0">
+  <div class="section-label">Important</div>
+  <h2 class="section-title">The rules</h2>
+  <ul class="rules-list">
+    <li><span class="rule-num">1</span><span>The Gimp does what he's told. No exceptions. If The Gaffer says jump, Sam says how high.</span></li>
+    <li><span class="rule-num">2</span><span>No photos near the red light district windows. This is not a suggestion.</span></li>
+    <li><span class="rule-num">3</span><span>The Therapist is available but sessions are capped at 3 minutes and he is not responsible for what you share in front of the group.</span></li>
+    <li><span class="rule-num">4</span><span>The Quiet Storm (Josh) must be monitored after drink two. He will be fine. We think.</span></li>
+    <li><span class="rule-num">5</span><span>What happens in Amsterdam stays in Amsterdam. Except the stories. Those are forever.</span></li>
+    <li><span class="rule-num">6</span><span>Sam's brother-in-law is one of us now. Treat him accordingly.</span></li>
+  </ul>
+</section>
+
+<!-- GAME -->
+<div class="game-section" id="game">
+  <div class="section-label" style="text-align:center">Mini game</div>
+  <h2 class="section-title" style="text-align:center;max-width:640px;margin:8px auto 4px">Catch the Stroopwafel</h2>
+  <p style="font-size:13px;color:var(--grey);text-align:center">Help Sam catch stroopwafels — but avoid the cannonball cyclists. Sam's uptight enough already.</p>
+  <div class="game-canvas-wrap">
+    <canvas id="gameCanvas" width="380" height="280"></canvas>
+    <div class="game-ui">
+      <div>
+        <div class="game-stat-label">Stroopwafels</div>
+        <div class="game-stat-val" id="scoreDisplay">0</div>
+      </div>
+      <div>
+        <div class="game-stat-label">Lives</div>
+        <div class="game-stat-val" id="livesDisplay">❤️❤️❤️</div>
+      </div>
+      <div>
+        <div class="game-stat-label">Level</div>
+        <div class="game-stat-val" id="levelDisplay">1</div>
+      </div>
+    </div>
+  </div>
+  <button class="game-btn" id="gameBtn" onclick="startGame()">Start Game</button>
+  <p class="game-instructions">Tap / click to move Sam left and right</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-size:20px;margin-bottom:12px">🇳🇱</p>
+  <p>Organised by <strong>The Gaffer</strong> · For <strong>The Gimp</strong> · Amsterdam 2025</p>
+  <p style="margin-top:8px">Un equipo, un sueño 🏆</p>
+</footer>
+
+<script>
+// ── GAME ──
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+let gameState = 'idle';
+let score = 0, lives = 3, level = 1, frame = 0;
+let player = { x: W/2, w: 44, h: 44, speed: 7 };
+let items = [];
+let keys = {};
+let touchX = null;
+let animId;
+
+function updateUI() {
+  document.getElementById('scoreDisplay').textContent = score;
+  document.getElementById('livesDisplay').textContent = '❤️'.repeat(Math.max(0,lives));
+  document.getElementById('levelDisplay').textContent = level;
+}
+
+function spawnItem() {
+  const isBike = Math.random() < 0.32 + level * 0.04;
+  items.push({
+    x: 20 + Math.random() * (W - 40),
+    y: -30,
+    type: isBike ? 'bike' : 'stroopwafel',
+    speed: (isBike ? 2.5 : 1.8) + level * 0.5,
+    r: isBike ? 16 : 14,
+  });
+}
+
+function drawPlayer() {
+  const px = player.x, py = H - 60;
+  ctx.font = '36px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('🧍', px, py);
+}
+
+function drawItem(item) {
+  ctx.font = (item.r * 2) + 'px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(item.type === 'bike' ? '🚲' : '🍪', item.x, item.y);
+}
+
+function drawBg() {
+  ctx.fillStyle = '#0D1B2A';
+  ctx.fillRect(0, 0, W, H);
+  // canal stripes
+  ctx.fillStyle = 'rgba(21,36,54,0.8)';
+  for(let i=0;i<4;i++) ctx.fillRect(0, 60+i*55, W, 28);
+  // water shimmer
+  ctx.fillStyle = 'rgba(232,168,56,0.04)';
+  for(let i=0;i<4;i++) ctx.fillRect(0, 60+i*55, W, 6);
+}
+
+function drawOverlay(msg, sub) {
+  ctx.fillStyle = 'rgba(13,27,42,0.82)';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#E8A838';
+  ctx.font = 'bold 22px Space Grotesk, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(msg, W/2, H/2 - 16);
+  ctx.fillStyle = '#8A9BAD';
+  ctx.font = '13px Inter, sans-serif';
+  ctx.fillText(sub, W/2, H/2 + 16);
+}
+
+function gameLoop() {
+  if(gameState !== 'playing') return;
+  frame++;
+
+  // spawn
+  const spawnRate = Math.max(28, 55 - level * 5);
+  if(frame % spawnRate === 0) spawnItem();
+
+  // level up
+  if(score > 0 && score % 8 === 0 && frame % 10 === 0) {
+    level = Math.min(8, 1 + Math.floor(score/8));
+  }
+
+  // move player
+  if(keys['ArrowLeft'] || keys['a']) player.x = Math.max(player.w/2, player.x - player.speed);
+  if(keys['ArrowRight'] || keys['d']) player.x = Math.min(W - player.w/2, player.x + player.speed);
+  if(touchX !== null) {
+    const diff = touchX - player.x;
+    player.x += Math.sign(diff) * Math.min(Math.abs(diff), player.speed * 1.6);
+    player.x = Math.max(22, Math.min(W-22, player.x));
+  }
+
+  // update items
+  items.forEach(it => it.y += it.speed);
+
+  // collision check
+  const py = H - 60;
+  items = items.filter(it => {
+    const dist = Math.hypot(it.x - player.x, it.y - py);
+    if(dist < it.r + 22) {
+      if(it.type === 'stroopwafel') { score++; }
+      else { lives--; if(lives <= 0){ endGame(); } }
+      return false;
+    }
+    return it.y < H + 20;
+  });
+
+  updateUI();
+
+  // draw
+  drawBg();
+  items.forEach(drawItem);
+  drawPlayer();
+
+  animId = requestAnimationFrame(gameLoop);
+}
+
+function startGame() {
+  cancelAnimationFrame(animId);
+  score = 0; lives = 3; level = 1; frame = 0; items = [];
+  player.x = W/2;
+  updateUI();
+  gameState = 'playing';
+  document.getElementById('gameBtn').textContent = 'Restart';
+  gameLoop();
+}
+
+function endGame() {
+  gameState = 'over';
+  cancelAnimationFrame(animId);
+  drawBg();
+  const emoji = score >= 20 ? '🏆' : score >= 10 ? '🍪' : '😬';
+  drawOverlay(emoji + ' Game over — ' + score + ' stroopwafels', score >= 15 ? 'Sam would be impressed' : 'The Gimp needs more practice');
+  document.getElementById('gameBtn').textContent = 'Try again';
+}
+
+// Controls
+document.addEventListener('keydown', e => { keys[e.key] = true; });
+document.addEventListener('keyup', e => { keys[e.key] = false; });
+
+canvas.addEventListener('touchstart', e => { e.preventDefault(); touchX = e.touches[0].clientX - canvas.getBoundingClientRect().left; }, {passive:false});
+canvas.addEventListener('touchmove', e => { e.preventDefault(); touchX = e.touches[0].clientX - canvas.getBoundingClientRect().left; }, {passive:false});
+canvas.addEventListener('touchend', e => { e.preventDefault(); touchX = null; }, {passive:false});
+canvas.addEventListener('mousemove', e => { if(gameState==='playing') touchX = e.clientX - canvas.getBoundingClientRect().left; });
+canvas.addEventListener('mouseleave', () => touchX = null);
+
+// idle canvas
+drawBg();
+drawOverlay('🍪', 'Press Start to play');
+</script>
+</body>
+</html>
